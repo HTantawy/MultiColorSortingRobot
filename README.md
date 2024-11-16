@@ -7,7 +7,6 @@ The simulation provides an interactive way to showcase the implementation of rob
 Open the project in Webots and run the simulation.
 
 ## Demo
-!
 ![Demo](Screenshot%202024-11-16%20at%207.45.46%20PM.png)
 
 
