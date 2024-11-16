@@ -8,5 +8,6 @@ Open the project in Webots and run the simulation.
 
 ## Demo
 !
-![Demo](Documentation/robotics_preview.png)
+![Demo](Screenshot%202024-11-16%20at%207.45.46%20PM.png)
+
 
