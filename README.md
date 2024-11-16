@@ -6,4 +6,5 @@ Welcome to the Robotic Arm Sorting project repository! This project is developed
 Open the project in Webots and run the simulation.
 
 ## Demo
-![](./Documentation/Webots.gif)
+!
+![Uploading robotics preview.png…]()
