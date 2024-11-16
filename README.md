@@ -7,4 +7,5 @@ Open the project in Webots and run the simulation.
 
 ## Demo
 !
-![Uploading robotics preview.png…]()
+![Demo](Documentation/robotics_preview.png)
+
