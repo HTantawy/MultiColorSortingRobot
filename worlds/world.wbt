@@ -1,0 +1,806 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  basicTimeStep 8
+}
+Viewpoint {
+  orientation -0.1565839255366573 -0.4660218122994359 0.8708071799914606 5.168247829385232
+  position -0.3003071554984765 0.5646117011526812 0.4248260328205775
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+DEF robot Robot {
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        dampingConstant 1
+      }
+      device [
+        RotationalMotor {
+          name "base_motor"
+          maxTorque 1
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.005
+        children [
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              dampingConstant 1000
+            }
+            device [
+              RotationalMotor {
+                name "first_motor"
+                maxTorque 1
+              }
+            ]
+            endPoint Solid {
+              translation 0 0 0.005
+              rotation 1 0 0 0
+              children [
+                Solid {
+                  rotation 1 0 0 0
+                  children [
+                    Solid {
+                      translation 0 0 0.05
+                      children [
+                        Solid {
+                          translation 0 0 0.05
+                          children [
+                            HingeJoint {
+                              jointParameters HingeJointParameters {
+                                dampingConstant 1000
+                              }
+                              device [
+                                RotationalMotor {
+                                  name "second_motor"
+                                  maxTorque 1
+                                }
+                              ]
+                              endPoint Solid {
+                                rotation 1 0 0 0
+                                children [
+                                  Solid {
+                                    translation 0 0 0.05
+                                    children [
+                                      Pose {
+                                        translation 0 0 0.05
+                                        children [
+                                          BallJoint {
+                                            jointParameters BallJointParameters {
+                                            }
+                                            jointParameters2 JointParameters {
+                                            }
+                                            jointParameters3 JointParameters {
+                                            }
+                                            device [
+                                              RotationalMotor {
+                                                name "X_motor"
+                                              }
+                                            ]
+                                            device2 [
+                                              RotationalMotor {
+                                                name "Y_motor"
+                                                minPosition -1.5707963267948966
+                                                maxPosition 1.5707963267948966
+                                              }
+                                            ]
+                                            device3 [
+                                              RotationalMotor {
+                                                name "Z_motor"
+                                              }
+                                            ]
+                                            endPoint Solid {
+                                              children [
+                                                DEF vacuum VacuumGripper {
+                                                  translation 0 0 0.02
+                                                  children [
+                                                    Solid {
+                                                      translation 0 0 -0.005
+                                                      rotation 1 0 0 3.141592653589793
+                                                      children [
+                                                        Camera {
+                                                          rotation 0.7071067811865476 0 -0.7071067811865476 3.141592653589793
+                                                          fieldOfView 0.1
+                                                          width 1
+                                                          height 1
+                                                          near 0.001
+                                                          recognition Recognition {
+                                                            segmentation TRUE
+                                                          }
+                                                        }
+                                                        Shape {
+                                                          appearance Appearance {
+                                                            material Material {
+                                                              diffuseColor 1 0.333333 0.498039
+                                                            }
+                                                          }
+                                                          geometry Cone {
+                                                            bottomRadius 0.01
+                                                            height 0.01
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                  boundingObject Cylinder {
+                                                    height 0.01
+                                                    radius 0.002
+                                                  }
+                                                  physics Physics {
+                                                  }
+                                                  isOn TRUE
+                                                  contactPoints 1
+                                                }
+                                                Shape {
+                                                  appearance Appearance {
+                                                    material Material {
+                                                    }
+                                                  }
+                                                  geometry Sphere {
+                                                    radius 0.015
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                      Shape {
+                                        appearance Appearance {
+                                          material Material {
+                                          }
+                                        }
+                                        geometry Cylinder {
+                                          height 0.1
+                                          radius 0.01
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                        Shape {
+                          appearance Appearance {
+                            material Material {
+                            }
+                          }
+                          geometry Cylinder {
+                            height 0.1
+                            radius 0.01
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+          Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.305882 0.305882 0.305882
+              }
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.03
+            }
+          }
+        ]
+        name "solid(1)"
+      }
+    }
+  ]
+  controller "my_controller"
+}
+Robot {
+  name "robot(1)"
+  controller "supervisor"
+  supervisor TRUE
+}
+Solid {
+  translation 0.1 0.1 0.0199934
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 1 0 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    1 0 0
+  ]
+}
+Solid {
+  translation 0.2 0.15 0.509993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 1 0 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(14)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    1 0 0
+  ]
+}
+Solid {
+  translation 0.2 0.23 0.239993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 1 0 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(15)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    1 0 0
+  ]
+}
+Solid {
+  translation 0.12 0.12 0.0299934
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 1 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(4)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 1 0
+  ]
+}
+Solid {
+  translation 0.12 0.12 0.239993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 1 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(10)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 1 0
+  ]
+}
+Solid {
+  translation 0.12 0.19 0.419993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 1 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(11)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 1 0
+  ]
+}
+Solid {
+  translation 0.17 0.23 0.289993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 1 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(12)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 1 0
+  ]
+}
+Solid {
+  translation 0.14 0.14 0.049993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 0 1
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(5)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 0 1
+  ]
+}
+Solid {
+  translation 0.14 0.14 0.219993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 0 1
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(7)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 0 1
+  ]
+}
+Solid {
+  translation 0.17 0.21 0.359993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 0 1
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(8)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 0 1
+  ]
+}
+Solid {
+  translation 0.14 0.21 0.219993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0 0 1
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(9)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0 0 1
+  ]
+}
+Solid {
+  translation 0.0985799 0.0989949 0
+  rotation 0 0 -1 2.3561953071795863
+  children [
+    CadShape {
+      url [
+        "ramp.obj"
+      ]
+    }
+  ]
+  name "solid(1)"
+  boundingObject Mesh {
+    url [
+      "ramp.obj"
+    ]
+  }
+}
+Solid {
+  translation 0.13 0 0
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.3 0.3
+        }
+      }
+      geometry Mesh {
+        url [
+          "bowl.obj"
+        ]
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject Mesh {
+    url [
+      "bowl.obj"
+    ]
+  }
+}
+Solid {
+  translation -0.13 0 0
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.3 1 0.3
+        }
+      }
+      geometry Mesh {
+        url [
+          "bowl.obj"
+        ]
+      }
+    }
+  ]
+  name "solid(3)"
+  boundingObject Mesh {
+    url [
+      "bowl.obj"
+    ]
+  }
+}
+Solid {
+  translation 0 0.15 0
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.3 0.4 1
+        }
+      }
+      geometry Mesh {
+        url [
+          "bowl.obj"
+        ]
+      }
+    }
+  ]
+  name "solid(6)"
+  boundingObject Mesh {
+    url [
+      "bowl.obj"
+    ]
+  }
+}
+
+# Yellow ramp/bowl
+Solid {
+  translation 0 -0.15 0  # Positioned similarly to other bowls
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0  # Yellow color
+        }
+      }
+      geometry Mesh {
+        url [
+          "bowl.obj"
+        ]
+      }
+    }
+  ]
+  name "solid(20)"
+  boundingObject Mesh {
+    url [
+      "bowl.obj"
+    ]
+  }
+}
+
+# Add yellow balls
+Solid {
+  translation 0.15 0.17 0.419993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 1 1 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(21)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    1 1 0
+  ]
+}
+
+Solid {
+  translation 0.18 0.19 0.319993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 1 1 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(22)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    1 1 0
+  ]
+}
+
+Solid {
+  translation 0.16 0.15 0.259993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 1 1 0
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(23)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    1 1 0
+  ]
+}
+
+# Purple Balls
+Solid {
+  translation 0.15 0.12 0.419993  # Adjust position as needed to fit on the ramp
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0.5 0 0.5  # Purple color
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(24)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0.5 0 0.5  # Purple color
+  ]
+}
+Solid {
+  translation 0.17 0.14 0.319993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0.5 0 0.5
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(25)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0.5 0 0.5
+  ]
+}
+Solid {
+  translation 0.18 0.16 0.259993
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          ambientIntensity 0
+          diffuseColor 0.5 0 0.5
+          shininess 0
+        }
+      }
+      geometry Sphere {
+        radius 0.01
+      }
+    }
+  ]
+  name "solid(26)"
+  boundingObject Sphere {
+    radius 0.01
+    subdivision 2
+  }
+  physics Physics {
+    density 1
+  }
+  recognitionColors [
+    0.5 0 0.5
+  ]
+}
